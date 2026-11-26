@@ -121,12 +121,15 @@ This adapter is an independent development and **not compatible** with the `hue`
 See [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Changelog
+### 0.1.1 (2026-11-26)
+- (Exc3pt10n) Contact e-mail address of the author added
+
 ### 0.1.0 (2026-11-26)
 - (Exc3pt10n) Initial release: Philips Hue adapter based on the Hue API v2 with event stream
 
 ## License
 MIT License, see [LICENSE](LICENSE).
 
-Copyright (c) 2026 Exc3pt10n
+Copyright (c) 2026 Exc3pt10n <kontakt@jansesoft.de>
 
 Philips and Hue are trademarks of Signify. This project is not affiliated with or endorsed by Signify.
