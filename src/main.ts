@@ -81,12 +81,12 @@ class PhilipsHue extends utils.Adapter {
                 // we may have missed events while being disconnected
                 this.scheduleSync(0);
             } else {
-                void this.setState('info.connection', true, true);
+                this.setConnected(true);
             }
         });
         this.eventStream.on('disconnected', (reason, retryInMs) => {
             this.log.warn(`Event stream disconnected (${reason}), reconnecting in ${Math.round(retryInMs / 1_000)} s`);
-            void this.setState('info.connection', false, true);
+            this.setConnected(false);
         });
         this.eventStream.on('events', events => {
             // process events strictly in order, so an older value never overwrites a newer one
@@ -226,9 +226,26 @@ class PhilipsHue extends utils.Adapter {
             }
         }
 
-        for (const fullId of Object.keys(existingObjects)) {
+        const obsolete = Object.keys(existingObjects).filter(fullId => {
             const relativeId = this.toRelativeId(fullId);
-            if (!desired.has(fullId) && relativeId !== 'info' && !relativeId.startsWith('info.')) {
+            return !desired.has(fullId) && relativeId !== 'info' && !relativeId.startsWith('info.');
+        });
+        // objects with custom settings (history, influxdb, sql, ...) are kept together with their parents,
+        // otherwise these settings would be lost
+        const kept = new Set<string>();
+        for (const fullId of obsolete) {
+            if (Object.keys(existingObjects[fullId]?.common?.custom ?? {}).length) {
+                this.log.warn(
+                    `Object "${this.toRelativeId(fullId)}" does not exist on the bridge anymore, but is kept because it has custom settings (e.g. history). Delete it manually if it is not needed anymore.`,
+                );
+                for (let id = fullId; id.length > this.namespace.length; id = id.slice(0, id.lastIndexOf('.'))) {
+                    kept.add(id);
+                }
+            }
+        }
+        for (const fullId of obsolete) {
+            if (!kept.has(fullId)) {
+                const relativeId = this.toRelativeId(fullId);
                 this.log.info(`Deleting object "${relativeId}", because it does not exist on the bridge anymore`);
                 await this.delObjectAsync(relativeId);
             }
@@ -372,7 +389,10 @@ class PhilipsHue extends utils.Adapter {
 
         switch (obj.command) {
             case 'discoverBridges': {
-                const timeout = Number((obj.message as Record<string, unknown>)?.timeout) || 5_000;
+                const requested = Number((obj.message as Record<string, unknown>)?.timeout);
+                // the timeout comes from the admin UI, accept 1 to 30 seconds only
+                const timeout =
+                    Number.isFinite(requested) && requested > 0 ? Math.min(Math.max(requested, 1_000), 30_000) : 5_000;
                 const bridges = await this.browse(timeout);
                 respond(bridges.map(ip => ({ value: ip, label: ip })));
                 break;
@@ -428,6 +448,17 @@ class PhilipsHue extends utils.Adapter {
         }
 
         return [...ips];
+    }
+
+    /**
+     * Update the connection indicator
+     *
+     * @param connected whether the event stream is connected
+     */
+    private setConnected(connected: boolean): void {
+        this.setState('info.connection', connected, true).catch(e =>
+            this.log.warn(`Could not update the connection state: ${(e as Error).message}`),
+        );
     }
 
     /**

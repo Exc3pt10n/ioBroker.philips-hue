@@ -161,7 +161,7 @@ export function buildLightBody(
     if (cmd.xy !== undefined) {
         xy = parseXy(cmd.xy);
         if (!xy) {
-            throw new CommandError(`Invalid xy value: ${JSON.stringify(cmd.xy)} - expected "x,y" with values 0..1`);
+            throw new CommandError(`Invalid xy value: ${JSON.stringify(cmd.xy)} - expected "[x, y]" with values 0..1`);
         }
     }
     if (cmd.rgb !== undefined) {

@@ -186,7 +186,9 @@ export function sanitizeName(name: string): string {
  * Existing ids are kept, so renaming a light in the Hue app does not break scripts.
  */
 class IdAllocator {
+    /** Existing ids (lower case) of resources which still exist, mapped to their resource key */
     private readonly reserved = new Map<string, string>();
+    /** Ids (lower case) assigned in this run */
     private readonly used = new Set<string>();
 
     /**
@@ -199,7 +201,7 @@ class IdAllocator {
     ) {
         for (const [key, id] of existing) {
             if (activeKeys.has(key)) {
-                this.reserved.set(id, key);
+                this.reserved.set(id.toLowerCase(), key);
             }
         }
     }
@@ -217,20 +219,22 @@ class IdAllocator {
             existingId &&
             existingId.startsWith(`${prefix}.`) &&
             !existingId.slice(prefix.length + 1).includes('.') &&
-            this.reserved.get(existingId) === key &&
-            !this.used.has(existingId)
+            this.reserved.get(existingId.toLowerCase()) === key &&
+            !this.used.has(existingId.toLowerCase())
         ) {
-            this.used.add(existingId);
+            this.used.add(existingId.toLowerCase());
             return existingId;
         }
 
         const base = `${prefix}.${sanitizeName(name)}`;
         let candidate = base;
-        for (let i = 2; this.reserved.has(candidate) || this.used.has(candidate); i++) {
+        // ids differing only in case would collide on case-insensitive systems and in many tools
+        const taken = (id: string): boolean => this.reserved.has(id.toLowerCase()) || this.used.has(id.toLowerCase());
+        for (let i = 2; taken(candidate); i++) {
             candidate = `${base}_${i}`;
         }
 
-        this.used.add(candidate);
+        this.used.add(candidate.toLowerCase());
         return candidate;
     }
 }
@@ -367,7 +371,7 @@ function lightControlObjects(base: string, caps: Capabilities, isGroup: boolean)
             stateObject(`${base}.xy`, {
                 name: 'Color (CIE xy)',
                 type: 'string',
-                role: 'level.color.xy',
+                role: 'level.color.cie',
                 write: true,
             }),
             stateObject(`${base}.rgb`, {

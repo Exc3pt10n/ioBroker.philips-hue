@@ -118,6 +118,22 @@ tests.integration(path.join(__dirname, '..'), {
                 // the connection is reported at the end of the resync, after all states have been written
                 await waitFor(async () => (await getState('info.connection'))?.val === true);
             });
+
+            it('deletes removed devices, but keeps objects with custom settings', async function () {
+                this.timeout(20_000);
+                // e.g. history is enabled for the contact state
+                const open = (await getObject('sensors.Door.open'))!;
+                open.common.custom = { 'history.0': { enabled: true } };
+                await harness.objects.setObject(open._id, open);
+
+                bridge.setResources(createFixture().filter(r => !['dev-door', 'contact-1', 'tamper-1'].includes(r.id)));
+                bridge.dropStreams();
+
+                await waitFor(async () => !(await getObject('sensors.Door.tampered')), 15_000);
+                expect(await getObject('sensors.Door.open')).to.be.ok;
+                // the parent stays, so the kept state is not orphaned
+                expect(await getObject('sensors.Door')).to.be.ok;
+            });
         });
     },
 });

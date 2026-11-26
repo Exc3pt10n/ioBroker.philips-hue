@@ -52,6 +52,7 @@ describe('color', () => {
         expect(formatHexColor({ r: 255, g: 128, b: 0 })).to.equal('#FF8000');
 
         expect(parseXy('0.3,0.4')).to.deep.equal({ x: 0.3, y: 0.4 });
+        expect(parseXy('[0.3, 0.4]')).to.deep.equal({ x: 0.3, y: 0.4 });
         expect(parseXy([0.3, 0.4])).to.deep.equal({ x: 0.3, y: 0.4 });
         expect(parseXy({ x: 0.3, y: 0.4 })).to.deep.equal({ x: 0.3, y: 0.4 });
         expect(parseXy('0.3')).to.equal(undefined);

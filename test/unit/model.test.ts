@@ -141,6 +141,16 @@ describe('model', () => {
         expect(model.entities.find(e => e.kind === 'light' && e.lightId === 'light-desk')!.id).to.equal('lights.Desk');
     });
 
+    it('does not create ids which only differ in case', () => {
+        const resources = createFixture();
+        (resources.find(r => r.id === 'dev-hall')!.metadata as { name: string }).name = 'desk';
+
+        const ids = buildModel(new ResourceIndex(resources), defaultOptions)
+            .entities.filter(e => e.kind === 'light')
+            .map(e => e.id);
+        expect(ids).to.have.members(['lights.Desk', 'lights.desk_2']);
+    });
+
     it('computes light states', () => {
         const index = new ResourceIndex(createFixture());
         const model = buildModel(index, defaultOptions);
@@ -151,7 +161,7 @@ describe('model', () => {
             'lights.Desk.on': true,
             'lights.Desk.brightness': 50,
             'lights.Desk.colorTemperature': 2732,
-            'lights.Desk.xy': '0.4573,0.41',
+            'lights.Desk.xy': '[0.4573, 0.41]',
             'lights.Desk.rgb': computeStates(desk, index)['lights.Desk.rgb'],
             'lights.Desk.colorMode': 'ct',
             'lights.Desk.effect': 'no_effect',

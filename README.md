@@ -6,7 +6,7 @@
 ![Test and Release](https://github.com/Exc3pt10n/ioBroker.philips-hue/workflows/Test%20and%20Release/badge.svg)
 
 ## Philips Hue adapter for ioBroker
-This adapter connects your Philips Hue bridge with ioBroker. It controls Philips Hue lights, Friends of Hue lamps, plugs and
+This adapter connects your [Philips Hue](https://www.philips-hue.com) bridge with ioBroker. It controls Philips Hue lights, Friends of Hue lamps, plugs and
 other Zigbee lights paired with the bridge, and provides the states of Hue sensors, switches and dials.
 
 The adapter is built on the **Hue API v2** (CLIP v2):
@@ -43,7 +43,7 @@ As long as the adapter is not listed in the ioBroker repository, use *Install fr
 ### Objects
 Object ids are derived from the names in the Hue app. Once created, an id is kept even if you rename the device in the Hue app,
 so your scripts keep working. To get a new id after a rename, delete the object and restart the adapter.
-Objects of devices which are removed from the bridge are deleted automatically.
+Objects of devices which are removed from the bridge are deleted automatically. Objects with custom settings (e.g. history) are kept and reported in the log, delete them manually if they are not needed anymore.
 
 | Object                                  | Description                                                                         |
 |-----------------------------------------|-------------------------------------------------------------------------------------|
@@ -67,7 +67,7 @@ States are only created if at least one light supports the feature.
 | `allOn`            |          | Rooms and zones only: all lights are on                                                           |
 | `brightness`       |    ✓     | Brightness in %. Values > 0 turn the light on, 0 turns it off                                     |
 | `colorTemperature` |    ✓     | Color temperature in Kelvin                                                                       |
-| `xy`               |    ✓     | Color as CIE xy coordinates, e.g. `0.4573,0.41`                                                   |
+| `xy`               |    ✓     | Color as CIE xy coordinates, e.g. `[0.4573, 0.41]`                                               |
 | `rgb`              |    ✓     | Color as hex value, e.g. `#FF8800`. Only the color is set, use `brightness` for the brightness    |
 | `colorMode`        |          | Lights only: `ct` (color temperature) or `xy` (color)                                             |
 | `effect`           |    ✓     | Lights only: effect like `candle` or `fire`, `no_effect` stops it. Possible values depend on the light |

@@ -196,7 +196,10 @@ export function parseXy(value: unknown): XY | undefined {
     let y: unknown;
 
     if (typeof value === 'string') {
-        [x, y] = value.split(',').map(v => parseFloat(v));
+        [x, y] = value
+            .replace(/^\s*\[|\]\s*$/g, '')
+            .split(',')
+            .map(v => parseFloat(v));
     } else if (Array.isArray(value)) {
         [x, y] = value;
     } else if (value && typeof value === 'object') {
@@ -215,12 +218,12 @@ export function parseXy(value: unknown): XY | undefined {
 }
 
 /**
- * Format a color point as `"x,y"`
+ * Format a color point as `"[x, y]"` (role level.color.cie)
  *
  * @param xy the color point
  */
 export function formatXy(xy: XY): string {
-    return `${round4(xy.x)},${round4(xy.y)}`;
+    return `[${round4(xy.x)}, ${round4(xy.y)}]`;
 }
 
 /**
