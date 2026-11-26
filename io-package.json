@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "philips-hue",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "news": {
+            "0.1.1": {
+                "en": "Contact e-mail address of the author added",
+                "de": "E-Mail-Adresse des Autors ergänzt",
+                "ru": "Добавлен адрес электронной почты автора",
+                "pt": "Adicionado o endereço de e-mail do autor",
+                "nl": "E-mailadres van de auteur toegevoegd",
+                "fr": "Ajout de l'adresse e-mail de l'auteur",
+                "it": "Aggiunto l'indirizzo e-mail dell'autore",
+                "es": "Añadida la dirección de correo electrónico del autor",
+                "pl": "Dodano adres e-mail autora",
+                "uk": "Додано адресу електронної пошти автора",
+                "zh-cn": "添加了作者的联系电子邮件地址"
+            },
             "0.1.0": {
                 "en": "Initial release: Philips Hue adapter based on the Hue API v2 with event stream",
                 "de": "Erste Version: Philips-Hue-Adapter auf Basis der Hue API v2 mit Eventstream",
@@ -44,7 +57,7 @@
             "zh-cn": "通过 Hue Bridge API v2 控制 Philips Hue 灯具、传感器、开关、房间、区域和场景"
         },
         "authors": [
-            "Exc3pt10n"
+            "Exc3pt10n <kontakt@jansesoft.de>"
         ],
         "keywords": [
             "philips",

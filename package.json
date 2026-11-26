@@ -1,9 +1,10 @@
 {
   "name": "iobroker.philips-hue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Philips Hue lights, sensors, switches, rooms, zones and scenes via the Hue Bridge API v2",
   "author": {
-    "name": "Exc3pt10n"
+    "name": "Exc3pt10n",
+    "email": "kontakt@jansesoft.de"
   },
   "homepage": "https://github.com/Exc3pt10n/ioBroker.philips-hue",
   "license": "MIT",
