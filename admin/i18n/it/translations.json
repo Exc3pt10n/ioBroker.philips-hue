@@ -1,0 +1,19 @@
+{
+    "Bridge": "Bridge",
+    "Bridge address": "Indirizzo del bridge",
+    "IP address or host name of the bridge. Open the list to search for bridges in your network.": "Indirizzo IP o nome host del bridge. Apri l'elenco per cercare i bridge nella tua rete.",
+    "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.": "Per l'associazione premi il pulsante di collegamento sul bridge e poi fai clic su «Associa al bridge» entro 30 secondi.",
+    "Pair with bridge": "Associa al bridge",
+    "The link button on the bridge was not pressed": "Il pulsante di collegamento sul bridge non è stato premuto",
+    "Please enter the bridge address first": "Inserisci prima l'indirizzo del bridge",
+    "Pairing failed, see the log for details": "Associazione non riuscita, vedi il log per i dettagli",
+    "Application key": "Chiave dell'applicazione",
+    "Is filled in automatically when pairing.": "Viene compilata automaticamente durante l'associazione.",
+    "Options": "Opzioni",
+    "Skip rooms and zones": "Ignora stanze e zone",
+    "Do not create objects for rooms, zones and the group of all lights.": "Non creare oggetti per stanze, zone e il gruppo di tutte le luci.",
+    "Skip scenes": "Ignora scene",
+    "Do not create objects for scenes and smart scenes.": "Non creare oggetti per scene e scene intelligenti.",
+    "Switch on with color changes": "Accendi al cambio colore",
+    "Switch a light on when its color, color temperature or effect is changed.": "Accendi una luce quando ne vengono modificati il colore, la temperatura di colore o l'effetto."
+}

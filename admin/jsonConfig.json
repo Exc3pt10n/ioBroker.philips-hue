@@ -1,0 +1,115 @@
+{
+    "type": "panel",
+    "i18n": true,
+    "items": {
+        "_bridgeHeader": {
+            "type": "header",
+            "text": "Bridge",
+            "size": 3,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "bridge": {
+            "type": "autocompleteSendTo",
+            "command": "discoverBridges",
+            "jsonData": "{\"timeout\": 5000}",
+            "freeSolo": true,
+            "label": "Bridge address",
+            "help": "IP address or host name of the bridge. Open the list to search for bridges in your network.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "_pairingHint": {
+            "type": "staticText",
+            "text": "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 8,
+            "lg": 6,
+            "xl": 6
+        },
+        "pairBridge": {
+            "type": "sendTo",
+            "command": "pairBridge",
+            "jsonData": "{\"ip\": \"${data.bridge}\"}",
+            "label": "Pair with bridge",
+            "icon": "add",
+            "variant": "contained",
+            "showProcess": true,
+            "useNative": true,
+            "timeout": 15000,
+            "error": {
+                "linkButtonNotPressed": "The link button on the bridge was not pressed",
+                "noBridgeAddress": "Please enter the bridge address first",
+                "pairingFailed": "Pairing failed, see the log for details"
+            },
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 3,
+            "xl": 3
+        },
+        "appKey": {
+            "type": "password",
+            "visible": true,
+            "label": "Application key",
+            "help": "Is filled in automatically when pairing.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 8,
+            "lg": 6,
+            "xl": 6
+        },
+        "_optionsHeader": {
+            "type": "header",
+            "text": "Options",
+            "size": 3,
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
+        },
+        "ignoreGroups": {
+            "type": "checkbox",
+            "label": "Skip rooms and zones",
+            "help": "Do not create objects for rooms, zones and the group of all lights.",
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "ignoreScenes": {
+            "type": "checkbox",
+            "label": "Skip scenes",
+            "help": "Do not create objects for scenes and smart scenes.",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        },
+        "turnOnWithOthers": {
+            "type": "checkbox",
+            "label": "Switch on with color changes",
+            "help": "Switch a light on when its color, color temperature or effect is changed.",
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 4,
+            "xl": 4
+        }
+    }
+}

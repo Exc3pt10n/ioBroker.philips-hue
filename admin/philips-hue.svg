@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+    <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a3a3c"/>
+            <stop offset="1" stop-color="#111113"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="256" cy="200" r="190" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fffbe8" stop-opacity="0.85"/>
+            <stop offset="0.45" stop-color="#fff3c4" stop-opacity="0.25"/>
+            <stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="bulb" cx="236" cy="160" r="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="0.7" stop-color="#fdf8ea"/>
+            <stop offset="1" stop-color="#e9e2cf"/>
+        </radialGradient>
+        <linearGradient id="spectrum" x1="96" y1="0" x2="416" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff3b30"/>
+            <stop offset="0.2" stop-color="#ff9500"/>
+            <stop offset="0.4" stop-color="#ffd60a"/>
+            <stop offset="0.6" stop-color="#34c759"/>
+            <stop offset="0.8" stop-color="#0a84ff"/>
+            <stop offset="1" stop-color="#bf5af2"/>
+        </linearGradient>
+        <clipPath id="tile">
+            <rect width="512" height="512" rx="96"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#tile)">
+        <rect width="512" height="512" fill="url(#bg)"/>
+        <circle cx="256" cy="200" r="190" fill="url(#glow)"/>
+        <!-- light bulb -->
+        <path d="M256 70c-62 0-110 46-110 106 0 36 17 62 38 84 15 16 26 32 30 52h84c4-20 15-36 30-52 21-22 38-48 38-84 0-60-48-106-110-106z" fill="url(#bulb)"/>
+        <rect x="212" y="322" width="88" height="34" rx="10" fill="#c9c4b8"/>
+        <rect x="220" y="360" width="72" height="18" rx="9" fill="#a8a39a"/>
+        <!-- color spectrum -->
+        <rect x="96" y="410" width="320" height="28" rx="14" fill="url(#spectrum)"/>
+    </g>
+</svg>

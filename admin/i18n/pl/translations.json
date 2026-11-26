@@ -1,0 +1,19 @@
+{
+    "Bridge": "Mostek",
+    "Bridge address": "Adres mostka",
+    "IP address or host name of the bridge. Open the list to search for bridges in your network.": "Adres IP lub nazwa hosta mostka. Otwórz listę, aby wyszukać mostki w sieci.",
+    "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.": "Aby sparować, naciśnij przycisk łączenia na mostku, a następnie w ciągu 30 sekund kliknij „Sparuj z mostkiem”.",
+    "Pair with bridge": "Sparuj z mostkiem",
+    "The link button on the bridge was not pressed": "Przycisk łączenia na mostku nie został naciśnięty",
+    "Please enter the bridge address first": "Najpierw wpisz adres mostka",
+    "Pairing failed, see the log for details": "Parowanie nie powiodło się, szczegóły w dzienniku",
+    "Application key": "Klucz aplikacji",
+    "Is filled in automatically when pairing.": "Uzupełniany automatycznie podczas parowania.",
+    "Options": "Opcje",
+    "Skip rooms and zones": "Pomiń pokoje i strefy",
+    "Do not create objects for rooms, zones and the group of all lights.": "Nie twórz obiektów dla pokoi, stref i grupy wszystkich lamp.",
+    "Skip scenes": "Pomiń sceny",
+    "Do not create objects for scenes and smart scenes.": "Nie twórz obiektów dla scen i inteligentnych scen.",
+    "Switch on with color changes": "Włączaj przy zmianie koloru",
+    "Switch a light on when its color, color temperature or effect is changed.": "Włączaj lampę, gdy zmienia się jej kolor, temperatura barwowa lub efekt."
+}

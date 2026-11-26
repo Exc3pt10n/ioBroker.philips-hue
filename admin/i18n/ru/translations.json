@@ -1,0 +1,19 @@
+{
+    "Bridge": "Мост",
+    "Bridge address": "Адрес моста",
+    "IP address or host name of the bridge. Open the list to search for bridges in your network.": "IP-адрес или имя хоста моста. Откройте список, чтобы найти мосты в сети.",
+    "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.": "Для сопряжения нажмите кнопку связи на мосту, а затем в течение 30 секунд нажмите «Связать с мостом».",
+    "Pair with bridge": "Связать с мостом",
+    "The link button on the bridge was not pressed": "Кнопка связи на мосту не была нажата",
+    "Please enter the bridge address first": "Сначала введите адрес моста",
+    "Pairing failed, see the log for details": "Не удалось выполнить сопряжение, подробности в журнале",
+    "Application key": "Ключ приложения",
+    "Is filled in automatically when pairing.": "Заполняется автоматически при сопряжении.",
+    "Options": "Параметры",
+    "Skip rooms and zones": "Пропускать комнаты и зоны",
+    "Do not create objects for rooms, zones and the group of all lights.": "Не создавать объекты для комнат, зон и группы всех светильников.",
+    "Skip scenes": "Пропускать сцены",
+    "Do not create objects for scenes and smart scenes.": "Не создавать объекты для сцен и умных сцен.",
+    "Switch on with color changes": "Включать при смене цвета",
+    "Switch a light on when its color, color temperature or effect is changed.": "Включать светильник при изменении его цвета, цветовой температуры или эффекта."
+}

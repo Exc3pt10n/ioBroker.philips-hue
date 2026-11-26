@@ -5,3 +5,4 @@ build/
 *.tgz
 .dev-server/
 coverage/
+.commitinfo
