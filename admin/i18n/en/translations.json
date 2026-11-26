@@ -1,0 +1,19 @@
+{
+    "Bridge": "Bridge",
+    "Bridge address": "Bridge address",
+    "IP address or host name of the bridge. Open the list to search for bridges in your network.": "IP address or host name of the bridge. Open the list to search for bridges in your network.",
+    "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.": "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.",
+    "Pair with bridge": "Pair with bridge",
+    "The link button on the bridge was not pressed": "The link button on the bridge was not pressed",
+    "Please enter the bridge address first": "Please enter the bridge address first",
+    "Pairing failed, see the log for details": "Pairing failed, see the log for details",
+    "Application key": "Application key",
+    "Is filled in automatically when pairing.": "Is filled in automatically when pairing.",
+    "Options": "Options",
+    "Skip rooms and zones": "Skip rooms and zones",
+    "Do not create objects for rooms, zones and the group of all lights.": "Do not create objects for rooms, zones and the group of all lights.",
+    "Skip scenes": "Skip scenes",
+    "Do not create objects for scenes and smart scenes.": "Do not create objects for scenes and smart scenes.",
+    "Switch on with color changes": "Switch on with color changes",
+    "Switch a light on when its color, color temperature or effect is changed.": "Switch a light on when its color, color temperature or effect is changed."
+}

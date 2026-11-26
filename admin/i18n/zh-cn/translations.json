@@ -1,0 +1,19 @@
+{
+    "Bridge": "网桥",
+    "Bridge address": "网桥地址",
+    "IP address or host name of the bridge. Open the list to search for bridges in your network.": "网桥的 IP 地址或主机名。打开列表可在网络中搜索网桥。",
+    "To pair, press the link button on the bridge and then click 'Pair with bridge' within 30 seconds.": "配对时，请按下网桥上的连接按钮，然后在 30 秒内点击“与网桥配对”。",
+    "Pair with bridge": "与网桥配对",
+    "The link button on the bridge was not pressed": "未按下网桥上的连接按钮",
+    "Please enter the bridge address first": "请先输入网桥地址",
+    "Pairing failed, see the log for details": "配对失败，详情请查看日志",
+    "Application key": "应用密钥",
+    "Is filled in automatically when pairing.": "配对时自动填写。",
+    "Options": "选项",
+    "Skip rooms and zones": "跳过房间和区域",
+    "Do not create objects for rooms, zones and the group of all lights.": "不为房间、区域和所有灯组创建对象。",
+    "Skip scenes": "跳过场景",
+    "Do not create objects for scenes and smart scenes.": "不为场景和智能场景创建对象。",
+    "Switch on with color changes": "更改颜色时开灯",
+    "Switch a light on when its color, color temperature or effect is changed.": "更改灯的颜色、色温或效果时打开该灯。"
+}

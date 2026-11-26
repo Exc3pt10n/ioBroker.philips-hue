@@ -1,0 +1,146 @@
+{
+    "common": {
+        "name": "philips-hue",
+        "version": "0.1.0",
+        "news": {
+            "0.1.0": {
+                "en": "Initial release: Philips Hue adapter based on the Hue API v2 with event stream",
+                "de": "Erste Version: Philips-Hue-Adapter auf Basis der Hue API v2 mit Eventstream",
+                "ru": "Первая версия: адаптер Philips Hue на основе Hue API v2 с потоком событий",
+                "pt": "Primeira versão: adaptador Philips Hue baseado na Hue API v2 com fluxo de eventos",
+                "nl": "Eerste versie: Philips Hue-adapter op basis van de Hue API v2 met eventstream",
+                "fr": "Première version : adaptateur Philips Hue basé sur l'API Hue v2 avec flux d'événements",
+                "it": "Prima versione: adattatore Philips Hue basato sulla Hue API v2 con flusso di eventi",
+                "es": "Primera versión: adaptador Philips Hue basado en la Hue API v2 con flujo de eventos",
+                "pl": "Pierwsza wersja: adapter Philips Hue oparty na Hue API v2 ze strumieniem zdarzeń",
+                "uk": "Перша версія: адаптер Philips Hue на основі Hue API v2 з потоком подій",
+                "zh-cn": "首个版本：基于 Hue API v2 并支持事件流的 Philips Hue 适配器"
+            }
+        },
+        "titleLang": {
+            "en": "Philips Hue",
+            "de": "Philips Hue",
+            "ru": "Philips Hue",
+            "pt": "Philips Hue",
+            "nl": "Philips Hue",
+            "fr": "Philips Hue",
+            "it": "Philips Hue",
+            "es": "Philips Hue",
+            "pl": "Philips Hue",
+            "uk": "Philips Hue",
+            "zh-cn": "Philips Hue"
+        },
+        "desc": {
+            "en": "Controls Philips Hue lights, sensors, switches, rooms, zones and scenes via the Hue Bridge API v2",
+            "de": "Steuert Philips-Hue-Leuchten, Sensoren, Schalter, Räume, Zonen und Szenen über die Hue-Bridge-API v2",
+            "ru": "Управляет светильниками, датчиками, выключателями, комнатами, зонами и сценами Philips Hue через Hue Bridge API v2",
+            "pt": "Controla luzes, sensores, interruptores, divisões, zonas e cenas Philips Hue através da Hue Bridge API v2",
+            "nl": "Bestuurt Philips Hue-lampen, sensoren, schakelaars, kamers, zones en scènes via de Hue Bridge API v2",
+            "fr": "Contrôle les lampes, capteurs, interrupteurs, pièces, zones et scènes Philips Hue via l'API Hue Bridge v2",
+            "it": "Controlla luci, sensori, interruttori, stanze, zone e scene Philips Hue tramite la Hue Bridge API v2",
+            "es": "Controla luces, sensores, interruptores, habitaciones, zonas y escenas Philips Hue mediante la Hue Bridge API v2",
+            "pl": "Steruje lampami, czujnikami, przełącznikami, pokojami, strefami i scenami Philips Hue przez Hue Bridge API v2",
+            "uk": "Керує світильниками, датчиками, вимикачами, кімнатами, зонами та сценами Philips Hue через Hue Bridge API v2",
+            "zh-cn": "通过 Hue Bridge API v2 控制 Philips Hue 灯具、传感器、开关、房间、区域和场景"
+        },
+        "authors": [
+            "Exc3pt10n"
+        ],
+        "keywords": [
+            "philips",
+            "hue",
+            "light",
+            "zigbee",
+            "smart home"
+        ],
+        "licenseInformation": {
+            "type": "free",
+            "license": "MIT"
+        },
+        "platform": "Javascript/Node.js",
+        "icon": "philips-hue.svg",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/Exc3pt10n/ioBroker.philips-hue/main/admin/philips-hue.svg",
+        "readme": "https://github.com/Exc3pt10n/ioBroker.philips-hue/blob/main/README.md",
+        "loglevel": "info",
+        "tier": 2,
+        "mode": "daemon",
+        "type": "lighting",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "messagebox": true,
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=6.0.11"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=7.6.20"
+            }
+        ],
+        "nogit": true
+    },
+    "native": {
+        "bridge": "",
+        "appKey": "",
+        "ignoreGroups": false,
+        "ignoreScenes": false,
+        "turnOnWithOthers": true
+    },
+    "protectedNative": [
+        "appKey"
+    ],
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": {
+                    "en": "Information",
+                    "de": "Information",
+                    "ru": "Информация",
+                    "pt": "Informação",
+                    "nl": "Informatie",
+                    "fr": "Information",
+                    "it": "Informazioni",
+                    "es": "Información",
+                    "pl": "Informacje",
+                    "uk": "Інформація",
+                    "zh-cn": "信息"
+                }
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": {
+                    "en": "Connected to the bridge",
+                    "de": "Mit der Bridge verbunden",
+                    "ru": "Подключено к мосту",
+                    "pt": "Ligado à bridge",
+                    "nl": "Verbonden met de bridge",
+                    "fr": "Connecté au bridge",
+                    "it": "Connesso al bridge",
+                    "es": "Conectado al bridge",
+                    "pl": "Połączono z mostkiem",
+                    "uk": "Підключено до мосту",
+                    "zh-cn": "已连接到网桥"
+                },
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}

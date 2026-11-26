@@ -1,0 +1,59 @@
+{
+  "name": "iobroker.philips-hue",
+  "version": "0.1.0",
+  "description": "Philips Hue lights, sensors, switches, rooms, zones and scenes via the Hue Bridge API v2",
+  "author": {
+    "name": "Exc3pt10n"
+  },
+  "homepage": "https://github.com/Exc3pt10n/ioBroker.philips-hue",
+  "license": "MIT",
+  "keywords": [
+    "ioBroker",
+    "hue",
+    "philips hue",
+    "light",
+    "zigbee",
+    "smart home"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Exc3pt10n/ioBroker.philips-hue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Exc3pt10n/ioBroker.philips-hue/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "build/main.js",
+  "files": [
+    "admin/",
+    "build/",
+    "io-package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "prebuild": "node -e \"require('node:fs').rmSync('build', { recursive: true, force: true })\"",
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc --noEmit",
+    "lint": "eslint -c eslint.config.mjs .",
+    "test:unit": "mocha -r ts-node/register \"test/unit/**/*.test.ts\" --exit",
+    "test:package": "mocha -r ts-node/register test/packageFiles.ts --exit",
+    "test:integration": "mocha -r ts-node/register test/integrationAdapter.ts --exit",
+    "test": "npm run test:unit && npm run test:package"
+  },
+  "dependencies": {
+    "@iobroker/adapter-core": "^3.4.3",
+    "bonjour-service": "^1.4.4"
+  },
+  "devDependencies": {
+    "@iobroker/eslint-config": "^2.3.4",
+    "@iobroker/testing": "^6.3.3",
+    "@iobroker/types": "^7.2.5",
+    "@tsconfig/node22": "^22.0.6",
+    "@types/node": "^22.20.5",
+    "prettier": "^3.9.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
