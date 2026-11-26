@@ -44,6 +44,7 @@ tests.integration(path.join(__dirname, '..'), {
                 address = await bridge.start();
                 harness = getHarness();
 
+                // the harness encrypts the application key itself (encryptedNative)
                 await harness.changeAdapterConfig('philips-hue', { native: { bridge: address, appKey: APP_KEY } });
                 await harness.startAdapterAndWait(true);
                 await waitFor(() => bridge.connectedStreams > 0);

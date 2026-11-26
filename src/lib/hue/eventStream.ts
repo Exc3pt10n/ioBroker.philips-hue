@@ -3,6 +3,7 @@ import type { ClientRequest } from 'node:http';
 import { EventEmitter } from 'node:events';
 import { parseBridgeAddress } from './client';
 import type { HueEvent } from './types';
+import type { Timers } from './timers';
 
 /** Timeout for establishing the connection, an idle stream afterwards is normal */
 const CONNECT_TIMEOUT_MS = 15_000;
@@ -85,7 +86,7 @@ export interface EventStreamEvents {
  */
 export class HueEventStream extends EventEmitter<EventStreamEvents> {
     private request?: ClientRequest;
-    private retryTimer?: NodeJS.Timeout;
+    private retryTimer?: unknown;
     private attempt = 0;
     private active = false;
     private hasBeenConnected = false;
@@ -93,10 +94,12 @@ export class HueEventStream extends EventEmitter<EventStreamEvents> {
     /**
      * @param address address of the bridge, optionally with port
      * @param appKey application key
+     * @param timers timer functions of the adapter
      */
     constructor(
         private readonly address: string,
         private readonly appKey: string,
+        private readonly timers: Timers,
     ) {
         super();
     }
@@ -113,7 +116,7 @@ export class HueEventStream extends EventEmitter<EventStreamEvents> {
     /** Close the stream and stop reconnecting */
     stop(): void {
         this.active = false;
-        clearTimeout(this.retryTimer);
+        this.timers.clearTimeout(this.retryTimer);
         this.retryTimer = undefined;
         this.request?.destroy();
         this.request = undefined;
@@ -206,7 +209,7 @@ export class HueEventStream extends EventEmitter<EventStreamEvents> {
 
         this.emit('disconnected', reason, delay);
 
-        this.retryTimer = setTimeout(() => {
+        this.retryTimer = this.timers.setTimeout(() => {
             this.retryTimer = undefined;
             this.connect();
         }, delay);

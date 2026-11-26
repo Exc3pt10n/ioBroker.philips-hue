@@ -66,7 +66,7 @@ export class CommandQueue {
      */
     constructor(
         private readonly send: CommandSender,
-        private readonly delay: (ms: number) => Promise<void> = ms => new Promise(r => setTimeout(r, ms)),
+        private readonly delay: (ms: number) => Promise<void>,
     ) {}
 
     /**

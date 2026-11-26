@@ -10,6 +10,7 @@ import { createUser, HueApiError, HueClient } from './lib/hue/client';
 import { CommandQueue } from './lib/hue/commandQueue';
 import { discoverViaCloud, discoverViaMdns } from './lib/hue/discovery';
 import { HueEventStream } from './lib/hue/eventStream';
+import type { Timers } from './lib/hue/timers';
 import type { HueEvent } from './lib/hue/types';
 import { buildModel, computeEventStates, computeStates, resourceKey, type Entity, type Model } from './lib/model';
 import { ResourceIndex } from './lib/resourceIndex';
@@ -35,6 +36,11 @@ class PhilipsHue extends utils.Adapter {
     private entitiesByResource = new Map<string, Entity[]>();
 
     private syncTimer?: ioBroker.Timeout;
+    /** Timers of the adapter for the Hue library, cleared automatically when the adapter stops */
+    private readonly timers: Timers = {
+        setTimeout: (callback, ms) => this.setTimeout(callback, ms),
+        clearTimeout: timer => this.clearTimeout(timer as ioBroker.Timeout | undefined),
+    };
     private eventProcessing = Promise.resolve();
     private syncRunning = false;
     private syncPending = false;
@@ -58,7 +64,7 @@ class PhilipsHue extends utils.Adapter {
         await this.setState('info.connection', false, true);
 
         if (!this.config.bridge || !this.config.appKey) {
-            this.log.warn('Bridge address or user is not configured - please configure the adapter first');
+            this.log.warn('Bridge address or application key is not configured - please configure the adapter first');
             return;
         }
 
@@ -68,7 +74,7 @@ class PhilipsHue extends utils.Adapter {
             ms => this.delay(ms),
         );
 
-        this.eventStream = new HueEventStream(this.config.bridge, this.config.appKey);
+        this.eventStream = new HueEventStream(this.config.bridge, this.config.appKey, this.timers);
         this.eventStream.on('connected', reconnect => {
             this.log.info(`Event stream ${reconnect ? 're' : ''}connected`);
             if (reconnect) {
@@ -410,7 +416,7 @@ class PhilipsHue extends utils.Adapter {
      * @param timeout time to wait for answers in ms
      */
     private async browse(timeout: number): Promise<string[]> {
-        const results = await Promise.allSettled([discoverViaMdns(timeout), discoverViaCloud(timeout)]);
+        const results = await Promise.allSettled([discoverViaMdns(timeout, this.timers), discoverViaCloud(timeout)]);
         const ips = new Set<string>();
 
         for (const result of results) {

@@ -150,7 +150,7 @@ export class HueClient {
         const errors = parsed?.errors?.map(e => e.description).filter(Boolean) ?? [];
 
         if (res.status === 401 || res.status === 403) {
-            throw new HueApiError('Unauthorized - please create a new user in the adapter settings', res.status);
+            throw new HueApiError('Unauthorized - please pair the adapter with the bridge again in the instance settings', res.status);
         }
 
         if (res.status < 200 || res.status >= 300) {
@@ -184,7 +184,7 @@ export class HueClient {
     }
 }
 
-/** Result of a user creation attempt */
+/** Result of a pairing attempt (creation of an application key) */
 export type CreateUserResult =
     | { success: true; appKey: string; clientKey?: string }
     | { success: false; linkButtonNotPressed: boolean; message: string };

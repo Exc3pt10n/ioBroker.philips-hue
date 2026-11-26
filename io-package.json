@@ -51,7 +51,7 @@
             "hue",
             "light",
             "zigbee",
-            "smart home"
+            "lighting"
         ],
         "licenseInformation": {
             "type": "free",
@@ -92,6 +92,9 @@
         "ignoreScenes": false,
         "turnOnWithOthers": true
     },
+    "encryptedNative": [
+        "appKey"
+    ],
     "protectedNative": [
         "appKey"
     ],

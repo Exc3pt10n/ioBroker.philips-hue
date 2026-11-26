@@ -17,16 +17,11 @@ The adapter is built on the **Hue API v2** (CLIP v2):
 Requirements: Hue bridge v2 (square model) or newer, js-controller >= 6.0.11, Admin >= 7.6.20, Node.js >= 22.
 
 ## Installation
-The adapter is published on npm, but not yet listed in the ioBroker repository. Install it in the admin UI via
-*Adapters* → *Install from custom URL* (GitHub icon, enable the expert mode if necessary) → tab *npm* with the package name
-`iobroker.philips-hue`, or on the console of the ioBroker host:
-
-```bash
-iobroker url iobroker.philips-hue
-iobroker add philips-hue
-```
-
+Install the adapter like any other adapter from the ioBroker Admin interface (*Adapters*), then create an instance.
 Updates are installed the same way; the instance and its settings are kept.
+
+As long as the adapter is not listed in the ioBroker repository, use *Install from custom URL* in the *Adapters* tab
+(enable the expert mode if necessary) and enter the package name `iobroker.philips-hue`.
 
 ## Setup
 1. Create an instance of the adapter and open its settings.

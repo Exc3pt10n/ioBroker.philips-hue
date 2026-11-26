@@ -1,5 +1,6 @@
 import net from 'node:net';
 import { Bonjour } from 'bonjour-service';
+import type { Timers } from './timers';
 
 /** Cloud based discovery endpoint of Signify */
 const DISCOVERY_URL = 'https://discovery.meethue.com';
@@ -8,8 +9,9 @@ const DISCOVERY_URL = 'https://discovery.meethue.com';
  * Discover bridges in the local network via mDNS
  *
  * @param timeout time to wait for answers in ms
+ * @param timers timer functions of the adapter
  */
-export function discoverViaMdns(timeout: number): Promise<string[]> {
+export function discoverViaMdns(timeout: number, timers: Timers): Promise<string[]> {
     return new Promise(resolve => {
         const found = new Set<string>();
         const bonjour = new Bonjour();
@@ -22,7 +24,7 @@ export function discoverViaMdns(timeout: number): Promise<string[]> {
             }
         });
 
-        setTimeout(() => {
+        timers.setTimeout(() => {
             browser.stop();
             bonjour.destroy();
             resolve([...found]);
