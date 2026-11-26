@@ -150,7 +150,10 @@ export class HueClient {
         const errors = parsed?.errors?.map(e => e.description).filter(Boolean) ?? [];
 
         if (res.status === 401 || res.status === 403) {
-            throw new HueApiError('Unauthorized - please pair the adapter with the bridge again in the instance settings', res.status);
+            throw new HueApiError(
+                'Unauthorized - please pair the adapter with the bridge again in the instance settings',
+                res.status,
+            );
         }
 
         if (res.status < 200 || res.status >= 300) {
